@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/bootstrap-5.3.3-dist/css/bootstrap.css}">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.7.2/css/all.css"> -->
+    <title>Categorías</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">Hidden brand</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" aria-disabled="true">Categorias</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/productos/index}">Productos</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <a class="btn btn-primary" href="#">Ingresar</a> &nbsp;
+                  <a class="btn btn-danger" href="#">Registrarse</a>
+                </form>
+              </div>
+            </div>
+          </nav>
+          <div class="card">
+            <div class="card-header">
+              Listado de Categorías
+            </div>
+            <hr>
+            <a class="btn btn-primary" th:href="@{/categorias/nueva}" role="button">Nueva</a>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Operaciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr th:each="categoria : ${categorias}">
+                        <th scope="row" th:text="${categoria.id}"></th>
+                        <td th:text="${categoria.nombre}"></td>
+                        <td th:text="${categoria.descripcion}"></td>
+                        <td> <img th:src="@{/imgs/{img}(img=${categoria.imagen})}" width="50px" height="50px"></td>
+                        <td>
+                            <a th:href="@{/categorias/consultar(id=${categoria.id})}" class="btn btn-success btn-sm" role="button" title="Editar"><i class="fa-solid fa-pencil"></i></a> &nbsp;
+                            <a th:href="@{/categorias/eliminar(id=${categoria.id})}"class="btn btn-danger btn-sm" role="button" title="Eliminar" onclick="return confirm('¿Estas seguro?')"> <i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    
+                      <tr>
+                        <th colspan="4" th:text="'Categorias: '+ ${total}"></th>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            <div class="card-footer text-body-secondary">
+                2025 Aplicación desarrollada con SpringFramework, MariaDB, Bootstrap / Autor: Leonardo Adaya
+            </div>
+          </div>
+    </div>
+
+
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+    <script src="https://kit.fontawesome.com/87657c6b9f.js" crossorigin="anonymous"></script>
+</body>
+</html>

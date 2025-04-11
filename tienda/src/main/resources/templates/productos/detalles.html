@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/bootstrap-5.3.3-dist/css/bootstrap.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles</title>
+</head>
+<body class="vh-100 d-flex flex-column">
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">Hidden brand</a>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/categorias/index}">Categorias</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" th:href="@{/productos/index}">Productos</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <a class="btn btn-primary" href="#">Ingresar</a> &nbsp;
+                  <a class="btn btn-danger" href="#">Registrarse</a>
+                </form>
+              </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="d-flex flex-grow-1 justify-content-center align-items-center">
+        <div class="card w-75 h-85 p-4 shadow">
+            <div class="row g-0 h-100">
+              <div class="col-md-4">
+                <img th:src="@{/imgs/{img}(img=${producto.imagen})}" class="img-fluid rounded-start w-100 h-100" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body d-flex flex-column justify-content-center h-100">
+                  <!-- <h5 class="card-title">Card title</h5> -->
+                  <p class="card-text" th:text="${producto.id}"></p>
+                  <p class="card-text" th:text="${producto.categoria.nombre}"></p>
+                  <p class="card-text" th:text="${producto.nombre}"></p>
+                  <p class="card-text" th:text="${producto.fecha}"></p>
+                  <p class="card-text" th:text="${producto.descripcion}"></p>
+                  <p class="card-text" th:text="${producto.precio}"></p>
+                  <p class="card-text" th:text="${producto.marca}"></p>
+                  <!-- <p class="card-text" th:text="${producto.imagen}"></p> -->
+                  <p class="card-text" th:text="${producto.codigo}"></p>
+                  <p class="card-text" th:text="${producto.detalles}"></p>
+                  <p class="card-text" th:text="${producto.categoria.nombre}"></p>
+                  <form class="text-center" role="search">
+                    <a class="btn btn-success" href="#">Comprar</a> &nbsp;
+                    <a class="btn btn-danger" th:href="@{/productos/index}">Regresar</a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <footer>
+        <br>
+        <p class="text-center">
+            2025 Aplicación desarrollada con SpringFramework, MariaDB, Bootstrap / Autor: Fernando Torres
+        </p>
+    </footer>
+
+    <script src="bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+    <script src="https://kit.fontawesome.com/87657c6b9f.js" crossorigin="anonymous"></script>
+</body>
+</html>
